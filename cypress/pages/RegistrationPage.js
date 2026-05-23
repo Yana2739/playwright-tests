@@ -1,7 +1,12 @@
 class RegistrationPage {
-    visit() {
-      cy.visit('https://guest:welcome2qauto@qauto.forstudy.space/');
-    }
+  visit() {
+    cy.visit('/', {
+      auth: {
+        username: Cypress.env('login'),
+        password: Cypress.env('password'),
+      },
+    });
+  }
   
     openSignUpForm() {
       cy.contains('button', 'Sign up').click();
