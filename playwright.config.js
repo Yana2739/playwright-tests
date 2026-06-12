@@ -1,5 +1,7 @@
 // @ts-check
 
+require('dotenv').config()
+
 const { defineConfig, devices } = require('@playwright/test')
 
 module.exports = defineConfig({
@@ -21,11 +23,11 @@ module.exports = defineConfig({
   ],
 
   use: {
-    baseURL: 'https://qauto.forstudy.space/',
+    baseURL: process.env.BASE_URL,
 
     httpCredentials: {
-      username: 'guest',
-      password: 'welcome2qauto',
+      username: process.env.HTTP_USERNAME,
+      password: process.env.HTTP_PASSWORD,
     },
 
     browserName: 'chromium',
