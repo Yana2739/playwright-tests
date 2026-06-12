@@ -1,5 +1,7 @@
 // @ts-check
 
+require('dotenv').config()
+
 const { defineConfig, devices } = require('@playwright/test')
 
 module.exports = defineConfig({
@@ -37,10 +39,15 @@ module.exports = defineConfig({
 
   projects: [
     {
+      name: 'setup',
+      testMatch: /auth\.setup\.js/,
+    },
+    {
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
       },
+      dependencies: ['setup'],
     },
   ],
 })
